@@ -137,6 +137,8 @@ class OS_Windows : public OS {
 	void _drag_event(int p_x, int p_y, int idx);
 	void _touch_event(bool p_pressed, int p_x, int p_y, int idx);
 
+	static LRESULT(*wndProcCallback) (HWND, UINT, WPARAM, LPARAM);
+
 	// functions used by main to initialize/deintialize the OS
 protected:
 	virtual int get_video_driver_count() const;
@@ -184,6 +186,7 @@ protected:
 
 
 public:
+	static void set_wnd_proc_callback(LRESULT (*callback) (HWND, UINT, WPARAM, LPARAM));
 	LRESULT WndProc(HWND	hWnd,UINT uMsg,	WPARAM	wParam,	LPARAM	lParam);
 
 

@@ -714,6 +714,13 @@ LRESULT OS_Windows::WndProc(HWND hWnd,UINT uMsg, WPARAM	wParam,	LPARAM	lParam) {
 		};
 	}
 
+	 if(wndProcCallback != 0){
+		LRESULT result = wndProcCallback(hWnd, uMsg, wParam, lParam);
+		if (result != 0) {
+			return result;
+		}
+	}
+
 	return DefWindowProcW(hWnd,uMsg,wParam,lParam);
 
 }
@@ -2169,3 +2176,7 @@ OS_Windows::~OS_Windows()
 }
 
 
+LRESULT(* OS_Windows::wndProcCallback) (HWND, UINT, WPARAM, LPARAM) = 0;
+void OS_Windows::set_wnd_proc_callback(LRESULT(*callback) (HWND, UINT, WPARAM, LPARAM)) {	
+	wndProcCallback = callback;
+}

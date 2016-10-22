@@ -2180,6 +2180,8 @@ void Control::_bind_methods() {
 
 	ObjectTypeDB::bind_method(_MD("set_focus_neighbour","margin","neighbour"),&Control::set_focus_neighbour);
 	ObjectTypeDB::bind_method(_MD("get_focus_neighbour","margin"),&Control::get_focus_neighbour);
+	ObjectTypeDB::bind_method(_MD("find_next_valid_focus"),&Control::find_next_valid_focus);	
+	ObjectTypeDB::bind_method(_MD("find_prev_valid_focus"),&Control::find_prev_valid_focus);	
 
 	ObjectTypeDB::bind_method(_MD("set_ignore_mouse","ignore"),&Control::set_ignore_mouse);
 	ObjectTypeDB::bind_method(_MD("is_ignoring_mouse"),&Control::is_ignoring_mouse);
