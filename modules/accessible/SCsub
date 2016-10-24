@@ -1,0 +1,13 @@
+Import('env')
+
+print(env['PLATFORM'])
+	
+env.add_source_files(env.modules_sources, ["register_types.cpp"])
+
+if env['PLATFORM'] == "win32":		
+	env.add_source_files(env.modules_sources, "win/*.cpp")
+	env.Append(CXXFLAGS=['-DFATP_ACCESSIBLE_WINDOWS'])
+	env.Append(LIBS=File('win/OleAcc.Lib'))
+	env.Append(LIBS=File('win/User32.Lib'))
+else:
+	env.add_source_files(env.modules_sources, "stub/*.cpp")
