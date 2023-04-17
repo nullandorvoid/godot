@@ -14,7 +14,7 @@ def can_build():
 
     import sys
     import os
-    if sys.platform == 'darwin' or os.environ.has_key("OSXCROSS_IOS"):
+    if sys.platform == 'darwin' or ("OSXCROSS_IOS" in os.environ):
         return True
 
     return False

@@ -4,6 +4,11 @@ Import('env')
 
 # Not building in a separate env as scene needs it
 
+try:
+  basestring
+except NameError:
+  basestring = str
+
 # Thirdparty source files
 if (env['builtin_freetype'] != 'no'):
     thirdparty_dir = "#thirdparty/freetype/"

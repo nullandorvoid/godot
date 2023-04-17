@@ -252,17 +252,17 @@ if selected_platform in platform_list:
     CCFLAGS = env.get('CCFLAGS', '')
     env['CCFLAGS'] = ''
 
-    env.Append(CCFLAGS=string.split(str(CCFLAGS)))
+    env.Append(CCFLAGS=str.split(str(CCFLAGS)))
 
     CFLAGS = env.get('CFLAGS', '')
     env['CFLAGS'] = ''
 
-    env.Append(CFLAGS=string.split(str(CFLAGS)))
+    env.Append(CFLAGS=str.split(str(CFLAGS)))
 
     LINKFLAGS = env.get('LINKFLAGS', '')
     env['LINKFLAGS'] = ''
 
-    env.Append(LINKFLAGS=string.split(str(LINKFLAGS)))
+    env.Append(LINKFLAGS=str.split(str(LINKFLAGS)))
 
     flag_list = platform_flags[selected_platform]
     for f in flag_list:
@@ -275,7 +275,7 @@ if selected_platform in platform_list:
     # TODO: Add support to specify different levels of warning, e.g. only critical/significant, instead of on/off
     if (env["warnings"] == "yes"):
         if (os.name == "nt" and os.getenv("VSINSTALLDIR")): # MSVC, needs to stand out of course
-	   pass# env.Append(CCFLAGS=['/W2'])
+            pass # env.Append(CCFLAGS=['/W2'])
         else: # Rest of the world
             env.Append(CCFLAGS=['-Wall'])
     else:

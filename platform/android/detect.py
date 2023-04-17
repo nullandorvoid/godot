@@ -15,7 +15,7 @@ def get_name():
 def can_build():
 
     import os
-    if (not os.environ.has_key("ANDROID_NDK_ROOT")):
+    if (not ("ANDROID_NDK_ROOT" in os.environ)):
         return False
 
     return True
@@ -68,9 +68,9 @@ def configure(env):
             data, err = proc.communicate()
             rv = proc.wait()
             if rv:
-                print "====="
-                print err
-                print "====="
+                print ("=====")
+                print (err)
+                print ("=====")
             return rv
 
         def mySpawn(sh, escape, cmd, args, env):
